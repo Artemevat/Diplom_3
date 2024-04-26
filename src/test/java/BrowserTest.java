@@ -1,7 +1,4 @@
 import constants.Browsers;
-import groovyjarjarantlr4.v4.codegen.model.SrcOp;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import net.bytebuddy.asm.Advice;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -18,7 +15,6 @@ public abstract class BrowserTest {
     protected WebDriver driver;
 
     public void setUpDriver(Browsers browserName) {
-        String path;
         if  (browserName == Browsers.CHROME) {
             driver = new ChromeDriver();
             driver.manage().window().maximize();
@@ -40,8 +36,7 @@ public abstract class BrowserTest {
             File source = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
             path = "C:\\AT\\screenshot" + source.getName();
             FileUtils.copyFile(source, new File(path));
-        } catch (IOException e){
-            path = "Filed to capture screenshot: " + e.getMessage();
+        } catch (IOException ignored){
         }
     }
 }

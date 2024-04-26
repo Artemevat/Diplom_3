@@ -40,50 +40,39 @@ public class TransitionTest extends BrowserTest {
     @Test
     @DisplayName("Check transition by click button AccountButton")
     @Description("Check transition by click button AccountButton and displayed loginIndicator after transition")
-    public void checkClickOnPersonalAccButton() throws InterruptedException {
+    public void checkClickOnPersonalAccButton() {
         mainPage.openMainPage();
-        Thread.sleep(1000);
         mainPage.clickAccountButton();
-        Thread.sleep(1000);
         LoginPage loginPage = new LoginPage(this.driver);
-        Thread.sleep(1000);
         Assert.assertTrue(loginPage.loginIndicatorDisplayed());
     }
 
     @Test
     @DisplayName("Check transition by click ConstructorButton")
     @Description("Check transition by click ConstructorButton and displayed setBurger after transition")
-    public void switchFromProfileByClickDesignerButton() throws InterruptedException {
+    public void switchFromProfileByClickDesignerButton() {
         mainPage.openMainPage();
-        Thread.sleep(1000);
         mainPage.clickAccountButton();
-        Thread.sleep(1000);
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
         ProfilePage profilePage = new ProfilePage(this.driver);
         profilePage.clickConstructorButton();
-        Thread.sleep(1000);
         Assert.assertTrue(mainPage.setBurgerDisplayedMainPage());
     }
 
     @Test
     @DisplayName("Check transition by click LogoButton")
     @Description("Check transition by click LogoButton and displayed setBurger after transition")
-    public void switchFromProfileByClickLogoBurger() throws InterruptedException {
+    public void switchFromProfileByClickLogoBurger() {
         mainPage.openMainPage();
         mainPage.clickAccountButton();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
         ProfilePage profilePage = new ProfilePage(this.driver);
-        Thread.sleep(1000);
         mainPage.clickAccountButton();
-        Thread.sleep(1000);
         profilePage.clickLogoButton();
-        Thread.sleep(1000);
         Assert.assertTrue(mainPage.setBurgerDisplayedMainPage());
     }
 

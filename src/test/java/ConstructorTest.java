@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pageobject.MainPage;
 
+import java.io.IOException;
 
 
 public class ConstructorTest extends BrowserTest{
@@ -26,36 +27,30 @@ public class ConstructorTest extends BrowserTest{
     @Test
     @DisplayName("Go to Bun")
     @Description("Go to Bun, check section name")
-    public void goToBunByClick() throws InterruptedException {
+    public void goToBunByClick() {
         mainPage.openMainPage();
         mainPage.clickFillingButton();
-        Thread.sleep(1000);
         mainPage.clickBunButton();
-        Thread.sleep(1000);
         Assert.assertEquals("Булки", mainPage.getTextFromSelectedMenu());
     }
 
     @Test
     @DisplayName("Go to Sauce")
     @Description("Go to Sauce, check section name")
-    public void goToSaucesByClick() throws InterruptedException {
+    public void goToSaucesByClick() {
         mainPage.openMainPage();
         mainPage.clickFillingButton();
-        Thread.sleep(1000);
         mainPage.clickSauceButton();
-        Thread.sleep(1000);
         Assert.assertEquals("Соусы", mainPage.getTextFromSelectedMenu());
     }
 
     @Test
     @DisplayName("Go to Filling")
     @Description("Go to Filling, check section name")
-    public void goToFillingByClick() throws InterruptedException {
+    public void goToFillingByClick() {
         mainPage.openMainPage();
         mainPage.clickSauceButton();
-        Thread.sleep(1000);
         mainPage.clickFillingButton();
-        Thread.sleep(1000);
         Assert.assertEquals("Начинки", mainPage.getTextFromSelectedMenu());
     }
 }

@@ -39,45 +39,39 @@ public class LoginTest extends BrowserTest {
     @Test
     @DisplayName("Login by click button SignIn in main page")
     @Description("check successful login and displayed orderButton after successful login")
-    public void loginThroughSignInButton() throws InterruptedException {
+    public void loginThroughSignInButton() {
         MainPage mainPage = new MainPage(this.driver);
         mainPage.openMainPage();
         mainPage.clickLogin();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
-        Thread.sleep(1000);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
     }
 
     @Test
     @DisplayName("Login by click button AccountButton in main page")
     @Description("check successful login and displayed orderButton after successful login")
-    public void loginThroughPersonalAccountButton() throws InterruptedException {
+    public void loginThroughPersonalAccountButton() {
         MainPage mainPage = new MainPage(this.driver);
         mainPage.openMainPage();
         mainPage.clickAccountButton();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
-        Thread.sleep(1000);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
     }
 
     @Test
     @DisplayName("Login by click button SignIn in RegistrationPage")
     @Description("check successful login and displayed orderButton after successful login")
-    public void loginThroughTheButtonInTheRegistrationForm() throws InterruptedException {
+    public void loginThroughTheButtonInTheRegistrationForm() {
         RegistrationPage registrationPage = new RegistrationPage(this.driver);
         registrationPage.openRegistrationPage();
         registrationPage.clickSignInButton();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
-        Thread.sleep(1000);
         MainPage mainPage = new MainPage(this.driver);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
     }
@@ -85,15 +79,13 @@ public class LoginTest extends BrowserTest {
     @Test
     @DisplayName("Login by click button SignIn in RecoveryPage")
     @Description("check successful login and displayed orderButton after successful login")
-    public void loginFromRecoveryPage() throws InterruptedException {
+    public void loginFromRecoveryPage() {
         PasswordRecoveryPage passRecoveryPage = new PasswordRecoveryPage(this.driver);
         passRecoveryPage.openRecoveryPage();
         passRecoveryPage.clickSignInButton();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
-        Thread.sleep(1000);
         MainPage mainPage = new MainPage(this.driver);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
 

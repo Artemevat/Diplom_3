@@ -40,16 +40,14 @@ public class RegistrationTest extends BrowserTest{
     @Test
     @DisplayName("Check registration with correct password(password > 5 characters)")
     @Description("Check registration with correct password in RegistrationPage")
-    public void registrationOnRegPageSuccess() throws InterruptedException {
+    public void registrationOnRegPageSuccess() {
         user = new User(EMAIL, PASSWORD, NAME);
         RegistrationPage registrationPage = new RegistrationPage(this.driver);
         registrationPage.openRegistrationPage();
         registrationPage.registerUser(user);
-        Thread.sleep(1000);
         registrationPage.clickRegister();
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
         MainPage mainPage = new MainPage(this.driver);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
@@ -58,19 +56,15 @@ public class RegistrationTest extends BrowserTest{
     @Test
     @DisplayName("Check registration with correct password(password > 5 characters)")
     @Description("Check registration with correct password with moving from LoginPage to RegistrationPage")
-    public void registrationOnLoginPageSuccess() throws InterruptedException {
+    public void registrationOnLoginPageSuccess() {
         user = new User(EMAIL, PASSWORD, NAME);
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.openLoginPage();
-        Thread.sleep(1000);
         loginPage.clickRegisterButton();
-        Thread.sleep(1000);
         RegistrationPage registrationPage = new RegistrationPage(this.driver);
         registrationPage.registerUser(user);
-        Thread.sleep(1000);
         registrationPage.clickRegister();
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
         MainPage mainPage = new MainPage(this.driver);
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
@@ -79,21 +73,17 @@ public class RegistrationTest extends BrowserTest{
     @Test
     @DisplayName("Check registration with correct password(password > 5 characters)")
     @Description("Check registration with correct password with moving from MainPage to LoginPage to RegistrationPage")
-    public void registrationOnMainPageSuccess() throws InterruptedException {
+    public void registrationOnMainPageSuccess() {
         user = new User(EMAIL, PASSWORD, NAME);
         MainPage mainPage = new MainPage(this.driver);
         mainPage.openMainPage();
-        Thread.sleep(1000);
         mainPage.clickLogin();
-        Thread.sleep(1000);
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.clickRegisterButton();
         RegistrationPage registrationPage = new RegistrationPage(this.driver);
         registrationPage.registerUser(user);
-        Thread.sleep(1000);
         registrationPage.clickRegister();
         loginPage.enterEmailAndPassword(user);
-        Thread.sleep(1000);
         loginPage.clickSignInButton();
         Assert.assertTrue(mainPage.orderButtonDisplayedMainPage());
     }
@@ -101,12 +91,11 @@ public class RegistrationTest extends BrowserTest{
     @Test
     @DisplayName("Check registration with incorrect password (password < 5 characters)")
     @Description("Check registration with incorrect password in RegistrationPage")
-    public void checkRegistrationWithWrongPassError() throws InterruptedException {
+    public void checkRegistrationWithWrongPassError() {
         user = new User(EMAIL, INCORRECT_PASSWORD, NAME);
         RegistrationPage registrationPage = new RegistrationPage(this.driver);
         registrationPage.openRegistrationPage();
         registrationPage.registerUser(user);
-        Thread.sleep(1000);
         registrationPage.clickRegister();
         Assert.assertTrue(registrationPage.incorrectPasswordErrorDisplayed());
     }

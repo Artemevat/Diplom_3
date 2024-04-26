@@ -36,19 +36,16 @@ public class LogoutTest extends BrowserTest {
     @Test
     @DisplayName("Logout in ProfilePage")
     @Description("check successful logout and displayed loginIndicator after logout in ProfilePage")
-    public void logoutSuccess() throws InterruptedException {
+    public void logoutSuccess() {
         MainPage mainPage = new MainPage(driver);
         mainPage.openMainPage();
         mainPage.clickLogin();
-        Thread.sleep(1000);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmailAndPassword(user);
         loginPage.clickSignInButton();
         mainPage.clickAccountButton();
-        Thread.sleep(1000);
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.clickLogoutButton();
-        Thread.sleep(1000);
         Assert.assertTrue(loginPage.loginIndicatorDisplayed());
     }
 
